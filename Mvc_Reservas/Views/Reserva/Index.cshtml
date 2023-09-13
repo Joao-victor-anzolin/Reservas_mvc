@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Mvc_Reservas.Models.Reserva>
+
+    @{
+    ViewData["Title"] = "Cadastro | Reservas";
+    }
+
+    <h1 class="text-center">Reservas</h1>
+
+    <div class="d-flex flex-row mb-4 mt-4">
+        
+        <div class="w-50">
+            <a asp-action="Create" class="btn btn-primary mt-3">Adicionar Reserva</a>
+        </div>
+
+        <div class="w-50">
+            <form class="d-flex" role="search">
+                <input name="inFiltro" class="form-control me-2" type="search" aria-label="Search">
+                <button class="btn btn-outline-success" asp-controller="Reserva" asp-action="filter">Filtrar</button>
+            </form>
+        </div>
+
+    </div>
+
+    <table class="table table-hover align-text-bottom">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Acomodacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CafeIncluso)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.DataChegada)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.DataSaida)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Acomodacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CafeIncluso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataChegada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataSaida)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    <a class=" btn text-decoration-none btn-primary" asp-controller="Reserva" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <td>
+                <td>
+                    <a class="btn btn-danger" asp-controller="Reserva" asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
+                <td>
+                </tr>
+
+
+}
+        </tbody>
+    </table>
